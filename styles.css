@@ -9,7 +9,6 @@
 
 html {
     font-size: 62.5%;
-    font-family: "Passions Conflict", sans-serif;
     /* 1rem = 10px; */
 }
 
@@ -20,6 +19,7 @@ body {
     height: auto;
     max-width: 100%;
     background-attachment: fixed;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 img {
@@ -59,7 +59,9 @@ ul {
 }
 
 .header-info-1>ul>li>p {
+    font-family: "Passions Conflict", sans-serif;
     font-size: 8rem;
+    user-select: none;
     color: #d8cdc8;
 }
 
@@ -80,15 +82,23 @@ ul {
 
 }
 
-.header-info-2>ul>li>p {
-    text-align: center;
-    width: 8.9rem;
+.header-info-2>ul>li>button {
+    font-family: "Bebas Neue", sans-serif;
+    display: inline-block;
+    font-size: 2.3rem;
+    border: none;
     cursor: pointer;
+    background-color: #84412000;
+    color: #d8cdc8;
+    text-align: center;
     transition: all 100ms;
+    width: 9.5rem;
+    height: 4rem;
+
 }
 
-.header-info-2>ul>li>p:hover {
-    font-size: 2.4rem;
+.header-info-2>ul>li>button:hover {
+    font-size: 2.5rem;
     color: #ffffff;
 }
 
@@ -103,7 +113,7 @@ ul {
     display: flex;
     justify-content: center;
     height: 20rem;
-    position: relative
+    position: relative;
 }
 
 .shelf-1 {
@@ -173,15 +183,20 @@ ul {
 
 /* ))) */
 .pop-up {
-    height: 30rem;
-    border: 4px solid rgb(255 255 255 / 35%);
+    position: absolute;
+    left: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.911);
     max-width: 30rem;
+    width: 25rem;
     border-radius: 0.75rem;
     margin: 0 auto;
     padding: 0 2rem;
-    transform: translate(0%,-30%);
+    transform: translate(-50%,-30%) scale(0);
+    background-color: black;
 
-
+}
+.pop-up.active{
+    transform: translate(-50%,-30%) scale(1);
 }
 
 .input-wrapper{
@@ -189,6 +204,8 @@ ul {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-bottom:5rem;
 }
 
 .pu-header > p{
@@ -208,25 +225,54 @@ ul {
 
 input{
     font-family: "Bebas Neue", sans-serif;
-    color: rgb(255, 255, 255);
-
+    color: rgb(255, 253, 253);
     width: 100%;
     height: 4rem;
     margin: 0.6rem 1rem;
     font-size: 2.5rem;
     border: 0;
     border-radius:  0.50rem;
-    background-color: #00000000;
+    background-color: #35353500;
     border-bottom: 4px solid rgba(145, 145, 145, 0.952)
 }
 input:focus{
     outline: none;
 }
 input::placeholder{
-    color: rgba(255, 255, 255, 0.719);
+    color: rgba(255, 255, 255, 0.678);
     letter-spacing: 1px;
     font-size: 2.3rem;
 }
+
+.btn{
+    font-family: "Bebas Neue", sans-serif;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0.6rem;
+    padding: 0.8rem 6rem;
+    font-size: 2.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+/* OVERLAY */
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    background-color: rgba(0,0,0,.4);
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+#overlay.active{
+    opacity: 1;
+}
+
+
 
 /* Customs Books */
 .custom {

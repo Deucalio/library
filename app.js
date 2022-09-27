@@ -1,8 +1,73 @@
-const btns = [...document.querySelectorAll(".header-info-2 > ul > li > p")]
+const btns = [...document.querySelectorAll(".header-info-2 > ul > li > button")]
 let storeElements = document.querySelector(".books")
 const storeElementsCopy = storeElements.cloneNode(true)
 const box = document.querySelector(".box")
 const section = document.querySelector("section")
+
+
+const openModalButtons = document.querySelectorAll("[data-modal-target]")
+const closeModalButtons = document.querySelectorAll("[data-close-button]")
+const overlay = document.getElementById("overlay")
+
+const form = document.querySelector("form")
+const data = document.querySelectorAll("input")
+
+// const btn1 = document.querySelector(".my-books")
+// const btn2 = document.querySelector(".store")
+
+
+
+openModalButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const modal = document.querySelector(button.dataset.modalTarget)
+        openModal(modal);
+
+        // when modal opens disable btns
+        btns.map(btn => btn.disabled=true)
+
+        // Implementing submit event
+        form.addEventListener('submit', (event) => {
+
+            // print the input user submits;
+            data.forEach(elem => console.log(elem.value))
+        });
+
+
+        // if we're in store button remove those books
+        let storeElements = document.querySelectorAll(".box")
+        storeElements.forEach(elem => elem.remove())
+        
+    })
+})
+
+
+closeModalButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const closeBtn = document.querySelector(".x")
+        closeModal(modal);
+
+        // when modal closes buttons can be clicked
+        btns.map(btn => btn.removeAttribute("disabled"));
+
+    })
+})
+
+function openModal(modal){
+    if (modal == null){
+        return
+    }
+    modal.classList.add("active")
+    overlay.classList.add("active")
+}
+
+function closeModal(closeBtn){
+    if (closeBtn == null){
+        return
+    }
+    closeBtn.classList.remove("active")
+    overlay.classList.remove("active")
+}
+
 
 btns.forEach(btn => btn.addEventListener("click", () => {
     let selectedBtn = btns.find(btn => btn.className.includes("selected"))
@@ -62,3 +127,4 @@ btns.forEach(btn => btn.addEventListener("click", () => {
         }
     }
 }))
+

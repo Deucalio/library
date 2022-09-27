@@ -30,13 +30,13 @@
             <div class="header-info-2">
                 <ul>
                     <li>
-                        <p class="add-a-book">Add a book</p>
+                        <button data-modal-target="#modal" class="add-a-book">Add a book</button>
                     </li>
                     <li>
-                        <p class="my-books">My Books</p>
+                        <button class="my-books">My Books</button>
                     </li>
                     <li>
-                        <p class="store selected">Store</p>
+                        <button class="store selected">Store</button>
                     </li>
                 </ul>
             </div>
@@ -77,15 +77,18 @@
         </section> -->
     </section>
 
-    <form action="" class="pop-up">
+    <form action="#" class="pop-up" id="modal">
         <div class="input-wrapper">
-            <div class="x">&times</div>
+            <div data-close-button class="x">&times</div>
             <input placeholder="Name" type="text">
             <input placeholder="Author" type="text">
             <input placeholder="Number of pages" type="text">
             <input placeholder="Already read? (yes/no)" type="text">
+        <button class="btn" type="submit">Submit</button>
         </div>
     </form>
+
+    <div class="" id="overlay"></div>
 
 
 
