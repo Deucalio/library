@@ -10,11 +10,42 @@ const closeModalButtons = document.querySelectorAll("[data-close-button]")
 const overlay = document.getElementById("overlay")
 
 const form = document.querySelector("form")
-const data = document.querySelectorAll("input")
+const data = [...document.querySelectorAll("input")]
 
-// const btn1 = document.querySelector(".my-books")
-// const btn2 = document.querySelector(".store")
+// All books objects will be stored in this array;
+let myLibrary = [];
 
+function Book(title, author, numberOfPages, alreadyRead) {
+    this.title = title.toUpperCase();
+    this.author = author.toUpperCase();
+    this.numberOfPages = numberOfPages;
+    this.alreadyRead = alreadyRead.toUpperCase();
+}
+
+
+function addBookToLibrary() {
+    // do stuff here
+}
+
+// Implementing submit event
+form.addEventListener('submit', (event) => {
+
+    // saving the input user submits;
+    let userInput = [];
+    data.forEach(elem => {
+        userInput.push(elem.value);
+        elem.value = "";
+    });
+    let [user, author, title, nop, read] = userInput;
+
+    // passing the user input to constructor function
+    let newBook = new Book(user, author, title, nop, read);
+    myLibrary.push(newBook);
+
+    console.log("myLibrary", myLibrary);
+
+    closeModal(modal)
+});
 
 
 openModalButtons.forEach(button => {
@@ -22,50 +53,41 @@ openModalButtons.forEach(button => {
         const modal = document.querySelector(button.dataset.modalTarget)
         openModal(modal);
 
-        // when modal opens disable btns
-        btns.map(btn => btn.disabled=true)
-
-        // Implementing submit event
-        form.addEventListener('submit', (event) => {
-
-            // print the input user submits;
-            data.forEach(elem => console.log(elem.value))
-        });
-
-
         // if we're in store button remove those books
         let storeElements = document.querySelectorAll(".box")
         storeElements.forEach(elem => elem.remove())
-        
+
     })
 })
-
 
 closeModalButtons.forEach(button => {
     button.addEventListener("click", () => {
         const closeBtn = document.querySelector(".x")
         closeModal(modal);
-
-        // when modal closes buttons can be clicked
-        btns.map(btn => btn.removeAttribute("disabled"));
-
     })
 })
 
-function openModal(modal){
-    if (modal == null){
+function openModal(modal) {
+    if (modal == null) {
         return
     }
     modal.classList.add("active")
     overlay.classList.add("active")
+
+
+    // when modal opens disable btns
+    btns.map(btn => btn.disabled = true)
 }
 
-function closeModal(closeBtn){
-    if (closeBtn == null){
+function closeModal(closeBtn) {
+    if (closeBtn == null) {
         return
     }
     closeBtn.classList.remove("active")
     overlay.classList.remove("active")
+
+    // when modal closes buttons can be clicked
+    btns.map(btn => btn.removeAttribute("disabled"));
 }
 
 
@@ -85,7 +107,7 @@ btns.forEach(btn => btn.addEventListener("click", () => {
             // let books = document.createElement("div")
             // box.appendChild(books)
             // let book = document.createElement("div")
-            
+
             // let p1 = document.createElement("p")
             // let p2 = document.createElement("p")
             // let p3 =  document.createElement("p")
@@ -127,4 +149,3 @@ btns.forEach(btn => btn.addEventListener("click", () => {
         }
     }
 }))
-
