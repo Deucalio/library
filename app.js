@@ -12,8 +12,16 @@ const overlay = document.getElementById("overlay")
 const form = document.querySelector("form")
 const data = [...document.querySelectorAll("input")]
 
+const userSection = document.querySelector(".user-section");
+const userSectionCopy = userSection.cloneNode(true);
+
+const bookBox = document.querySelector(".user-books")
+
 // All books objects will be stored in this array;
 let myLibrary = [];
+
+
+userSection.style.display = "none";
 
 function Book(title, author, numberOfPages, alreadyRead) {
     this.title = title.toUpperCase();
@@ -36,15 +44,38 @@ form.addEventListener('submit', (event) => {
         userInput.push(elem.value);
         elem.value = "";
     });
-    let [user, author, title, nop, read] = userInput;
+    let [title, author, nop, read] = userInput;
 
     // passing the user input to constructor function
-    let newBook = new Book(user, author, title, nop, read);
+    let newBook = new Book(title, author, nop, read);
     myLibrary.push(newBook);
 
-    console.log("myLibrary", myLibrary);
+    // Display the book
+    let userBookDiv = document.createElement("div")
+    userBookDiv.className = "user-book"
+
+    let p1 = document.createElement("p")
+    let p2 = document.createElement("p")
+    let p3 = document.createElement("p")
+    let p4 = document.createElement("p")
+
+    p1.innerHTML = `<span>${newBook.title}</span>`
+    p2.innerHTML = `${newBook.author}`
+    p3.innerHTML = `${newBook.numberOfPages}`
+    p4.innerHTML = `${newBook.alreadyRead}`
+
+    userBookDiv.appendChild(p1)
+    userBookDiv.appendChild(p2)
+    userBookDiv.appendChild(p3)
+    userBookDiv.appendChild(p4)
+
+    bookBox.appendChild(userBookDiv)
+
+
+    console.log(myLibrary, userBookDiv);
 
     closeModal(modal)
+    userSection.style.display = "block";
 });
 
 
@@ -52,6 +83,7 @@ openModalButtons.forEach(button => {
     button.addEventListener("click", () => {
         const modal = document.querySelector(button.dataset.modalTarget)
         openModal(modal);
+        userSection.style.display = "none";
 
         // if we're in store button remove those books
         let storeElements = document.querySelectorAll(".box")
@@ -63,6 +95,7 @@ openModalButtons.forEach(button => {
 closeModalButtons.forEach(button => {
     button.addEventListener("click", () => {
         const closeBtn = document.querySelector(".x")
+        userSection.style.display = "block";
         closeModal(modal);
     })
 })
@@ -104,37 +137,9 @@ btns.forEach(btn => btn.addEventListener("click", () => {
             let storeElements = document.querySelectorAll(".box")
             storeElements.forEach(elem => elem.remove())
 
-            // let books = document.createElement("div")
-            // box.appendChild(books)
-            // let book = document.createElement("div")
-
-            // let p1 = document.createElement("p")
-            // let p2 = document.createElement("p")
-            // let p3 =  document.createElement("p")
-            // let p4 =  document.createElement("p")
-
-            // p1.textContent = "Hobbit"
-            // p2.textContent = "JRR Tolkien"
-            // p3.textContent = "253"
-            // p4.textContent = "Status: Not Read"
+            userSection.style.display = "block";
 
 
-            // book.className = "book"
-            // book.classList.add("custom")
-
-            // books.appendChild(book)
-
-            // book.appendChild(p1)
-            // book.appendChild(p2)
-            // book.appendChild(p3)
-            // book.appendChild(p4)
-
-
-
-            //  book = document.createElement("img")
-            // book.src = "images/book-1.png"
-            // book.className = "book"
-            // books.appendChild(book)
         }
 
     } else if (btn.textContent === "Store") {
@@ -143,9 +148,11 @@ btns.forEach(btn => btn.addEventListener("click", () => {
             btn.classList.add("selected")
             section.appendChild(box)
             let storeElements = document.querySelectorAll(".books")
+
             storeElements.forEach(elem => elem.remove())
             box.appendChild(storeElementsCopy)
 
+            userSection.style.display = "none";
         }
     }
 }))

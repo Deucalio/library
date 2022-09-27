@@ -82,19 +82,18 @@ ul {
 
 }
 
-.header-info-2>ul>li>button {
+.add-a-book, .my-books, .store {
     font-family: "Bebas Neue", sans-serif;
     display: inline-block;
     font-size: 2.3rem;
-    border: none;
     cursor: pointer;
     background-color: #84412000;
     color: #d8cdc8;
     text-align: center;
     transition: all 100ms;
     width: 9.5rem;
+    border: none;
     height: 4rem;
-
 }
 
 .header-info-2>ul>li>button:hover {
@@ -102,8 +101,8 @@ ul {
     color: #ffffff;
 }
 
-.selected {
-    border-bottom: 2px solid rgb(243, 189, 89);
+.selected{
+    border-bottom: 2px solid aliceblue;
 }
 
 .box {
@@ -145,40 +144,7 @@ ul {
     transform: scale(1.2);
 }
 
-/* User books */
-.user-books{
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 10vh;
-    padding: 1rem 0;
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 5rem;
-    height: 50vh;
-    justify-items: center;
-    align-items: center;
-    align-content: space-between;
-}
-.user-book{
 
-    margin-top: 4rem;
-    border: 4px solid black;
-    height: fit-content;
-    max-width: 20rem;
-    width: auto;
-    padding: 1rem 2rem;
-    gap: 1rem;
-
-}
-
-.user-book > p{
-    color: rgba(201, 186, 186, 0.932);
-    font-size: 4.4vh;
-    font-family: "Bebas Neue", sans-serif;
-    word-wrap:break-word;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
 
 
 /* ))) */
@@ -274,27 +240,44 @@ input::placeholder{
 
 
 
-/* Customs Books */
-.custom {
-    max-width: 100%;
-    display: block;
+/* Customs Books (user-section) */
+
+/* User books */
+.user-section{
     height: auto;
-    border: 3px solid rgba(194, 191, 173, 0.712);
-    background-color: #020c0d;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+}
+.user-books{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 2rem;
+    padding: 1rem 0;
+    width: 85%;
+    margin: 0 auto;
+    justify-items: center;
+    align-items: center;
+    align-content: space-between;
+}
+.user-book{
+    border: 3px solid #a3999457;
+    height: fit-content;
+    max-width: 20rem;
+    width: 40rem;
+    padding: 1rem 2rem;
+    gap: 1rem;
 
-    border-radius: 0.25rem;
 }
 
-.custom>p {
+.user-book > p{
+    color: rgba(201, 186, 186, 0.932);
+    font-size: 3rem;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 4vh;
-    color: #d6d6d6;
-    padding: 1px 1rem;
+    word-wrap:break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
+
 span{
     color: #d8d8d8;
-    font-size: 7vh;
+    font-size: 5rem;
 }
+

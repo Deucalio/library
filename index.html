@@ -55,35 +55,36 @@
                     alt="">
             </div>
         </div>
-
-        <!-- <section>
-            <div class="user-books">
-                <div class="book user-book">
-                    <p> <span>The Hobbit</span></p>
-                    <p>JRR Tolkien</p>
-                    <p>253</p>
-                    <p>Status: Not Read</p>
-                </div>
-                
-
-                <div class="book user-book">
-                    <p> <span>The Fault in our Stars</span></p>
-                    <p>John Green</p>
-                    <p>200</p>
-                    <p>Status: Not Read</p>
-                </div>
-                <div class="book user-book"></div>
-            </div>
-        </section> -->
     </section>
+
+    <section class="user-section">
+        <div class="user-books">
+            <div class="user-book">
+
+                <!-- EXAMPLES (feel free to remove) -->
+                
+                <p> <span>The Hobbit</span></p>
+                <p>JRR Tolkien</p>
+                <p>253</p>
+                <p>Status: Not Read</p>
+            </div>
+            <div class="user-book">
+                <p> <span>The Fault in our Stars</span></p>
+                <p>John Green</p>
+                <p>200</p>
+                <p>Status: Not Read</p>
+            </div>
+          
+        </div>
+    </section> 
 
     <form action="#" class="pop-up" id="modal">
         <div class="input-wrapper">
             <div data-close-button class="x">&times</div>
-            <input required placeholder="Name" type="text">
-            <input required placeholder="Author" type="text">
+            <input maxlength="30" required placeholder="Name" type="text">
+            <input maxlength="15" required placeholder="Author" type="text">
             <input required placeholder="Number of pages" type="number">
-            <input required placeholder="Already read? (yes/no)" type="text">
+            <input maxlength="3" required placeholder="Already read? (yes/no)" type="text">
         <button class="btn" type="submit">Submit</button>
         </div>
     </form>
