@@ -10,7 +10,7 @@ const closeModalButtons = document.querySelectorAll("[data-close-button]")
 const overlay = document.getElementById("overlay")
 
 const form = document.querySelector("form")
-const data = [...document.querySelectorAll("input")]
+const data = [...document.querySelectorAll(".input-wrapper > input")]
 
 const userSection = document.querySelector(".user-section");
 const userSectionCopy = userSection.cloneNode(true);
@@ -19,6 +19,8 @@ const bookBox = document.querySelector(".user-books")
 
 // All books objects will be stored in this array;
 let myLibrary = [];
+let checkBoxes = [];
+
 
 
 userSection.style.display = "none";
@@ -30,10 +32,73 @@ function Book(title, author, numberOfPages, alreadyRead) {
     this.alreadyRead = alreadyRead.toUpperCase();
 }
 
-
-function addBookToLibrary() {
-    // do stuff here
+Book.prototype.toggle = function (checkBoxVal) {
+    this.alreadyRead = checkBoxVal;
 }
+
+
+function whetherRead(checkBoxVal, index) {
+    myLibrary[index].toggle(checkBoxVal)
+    checkBoxVal === false ? bookBox.children[index].children[3].textContent = "STATUS: NOT READ" :
+        bookBox.children[index].children[3].textContent = "STATUS: READ"
+}
+
+
+
+function displayBook(title, author, numberOfPages, alreadyRead) {
+    // Display the book
+    let userBookDiv = document.createElement("div")
+    userBookDiv.className = "user-book"
+
+
+
+
+    let p1 = document.createElement("p")
+    let p2 = document.createElement("p")
+    let p3 = document.createElement("p")
+    let p4 = document.createElement("p")
+
+
+    /*        <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+         </label> */
+    let toggleBtn = document.createElement("label")
+    toggleBtn.classList.add("switch")
+    let cb = document.createElement('input');
+    cb.type = "checkbox";
+    if (alreadyRead.toUpperCase() === "YES"){
+        cb.setAttribute("checked", "")
+    }
+    let span = document.createElement("span")
+    span.classList.add("slider")
+    span.classList.add("round")
+
+    toggleBtn.appendChild(cb)
+    toggleBtn.appendChild(span)
+
+    p1.innerHTML = `<span>${title}</span>`
+    p2.innerHTML = `${author}`
+    p3.innerHTML = `${numberOfPages}`
+    p4.innerHTML = "STATUS: " + (alreadyRead.toUpperCase() === "YES" ? "READ" : "NOT READ");
+    userBookDiv.appendChild(p1)
+    userBookDiv.appendChild(p2)
+    userBookDiv.appendChild(p3)
+    userBookDiv.appendChild(p4)
+
+    userBookDiv.appendChild(toggleBtn)
+
+    checkBoxes.push(cb)
+
+    bookBox.appendChild(userBookDiv)
+
+
+    checkBoxes.forEach((checkBox, index) => checkBox.addEventListener("change", () => {
+        whetherRead(checkBox.checked, index)
+    }))
+
+}
+
 
 // Implementing submit event
 form.addEventListener('submit', (event) => {
@@ -45,34 +110,10 @@ form.addEventListener('submit', (event) => {
         elem.value = "";
     });
     let [title, author, nop, read] = userInput;
-
     // passing the user input to constructor function
     let newBook = new Book(title, author, nop, read);
     myLibrary.push(newBook);
-
-    // Display the book
-    let userBookDiv = document.createElement("div")
-    userBookDiv.className = "user-book"
-
-    let p1 = document.createElement("p")
-    let p2 = document.createElement("p")
-    let p3 = document.createElement("p")
-    let p4 = document.createElement("p")
-
-    p1.innerHTML = `<span>${newBook.title}</span>`
-    p2.innerHTML = `${newBook.author}`
-    p3.innerHTML = `${newBook.numberOfPages}`
-    p4.innerHTML = `${newBook.alreadyRead}`
-
-    userBookDiv.appendChild(p1)
-    userBookDiv.appendChild(p2)
-    userBookDiv.appendChild(p3)
-    userBookDiv.appendChild(p4)
-
-    bookBox.appendChild(userBookDiv)
-
-
-    console.log(myLibrary, userBookDiv);
+    displayBook(newBook.title, newBook.author, newBook.numberOfPages, newBook.alreadyRead)
 
     closeModal(modal)
     userSection.style.display = "block";

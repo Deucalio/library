@@ -269,7 +269,7 @@ input::placeholder{
 
 .user-book > p{
     color: rgba(201, 186, 186, 0.932);
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-family: "Bebas Neue", sans-serif;
     word-wrap:break-word;
     white-space: pre-wrap;
@@ -281,3 +281,66 @@ span{
     font-size: 5rem;
 }
 
+
+/* TOOGLE BTN */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6.6rem;
+    height: 3.2rem;
+   
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgba(255, 255, 255, 0.842);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2f0fe6fa;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #0e2335;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(3.3rem);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
