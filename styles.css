@@ -82,7 +82,9 @@ ul {
 
 }
 
-.add-a-book, .my-books, .store {
+.add-a-book,
+.my-books,
+.store {
     font-family: "Bebas Neue", sans-serif;
     display: inline-block;
     font-size: 2.3rem;
@@ -101,7 +103,7 @@ ul {
     color: #ffffff;
 }
 
-.selected{
+.selected {
     border-bottom: 2px solid aliceblue;
 }
 
@@ -157,24 +159,25 @@ ul {
     border-radius: 0.75rem;
     margin: 0 auto;
     padding: 0 2rem;
-    transform: translate(-50%,-30%) scale(0);
+    transform: translate(-50%, -30%) scale(0);
     background-color: black;
 
 }
-.pop-up.active{
-    transform: translate(-50%,-30%) scale(1);
+
+.pop-up.active {
+    transform: translate(-50%, -30%) scale(1);
 }
 
-.input-wrapper{
+.input-wrapper {
     width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
 }
 
-.pu-header > p{
+.pu-header>p {
     height: fit-content;
 }
 
@@ -189,7 +192,7 @@ ul {
 
 }
 
-input{
+input {
     font-family: "Bebas Neue", sans-serif;
     color: rgb(255, 253, 253);
     width: 100%;
@@ -197,20 +200,22 @@ input{
     margin: 0.6rem 1rem;
     font-size: 2.5rem;
     border: 0;
-    border-radius:  0.50rem;
+    border-radius: 0.50rem;
     background-color: #35353500;
     border-bottom: 4px solid rgba(145, 145, 145, 0.952)
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
-input::placeholder{
+
+input::placeholder {
     color: rgba(255, 255, 255, 0.678);
     letter-spacing: 1px;
     font-size: 2.3rem;
 }
 
-.btn{
+.btn {
     font-family: "Bebas Neue", sans-serif;
     display: inline-block;
     margin: 0 auto;
@@ -224,17 +229,18 @@ input::placeholder{
 
 /* OVERLAY */
 
-#overlay{
+#overlay {
     position: fixed;
     opacity: 0;
-    background-color: rgba(0,0,0,.4);
-    top:0;
+    background-color: rgba(0, 0, 0, .4);
+    top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     pointer-events: none;
 }
-#overlay.active{
+
+#overlay.active {
     opacity: 1;
 }
 
@@ -243,10 +249,11 @@ input::placeholder{
 /* Customs Books (user-section) */
 
 /* User books */
-.user-section{
+.user-section {
     height: auto;
 }
-.user-books{
+
+.user-books {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     row-gap: 2rem;
@@ -257,7 +264,8 @@ input::placeholder{
     align-items: center;
     align-content: space-between;
 }
-.user-book{
+
+.user-book {
     border: 3px solid #a3999457;
     height: fit-content;
     max-width: 20rem;
@@ -267,16 +275,16 @@ input::placeholder{
 
 }
 
-.user-book > p{
+.user-book>p {
     color: rgba(201, 186, 186, 0.932);
     font-size: 2.8rem;
     font-family: "Bebas Neue", sans-serif;
-    word-wrap:break-word;
+    word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
 }
 
-span{
+span {
     color: #d8d8d8;
     font-size: 5rem;
 }
@@ -289,16 +297,16 @@ span{
     display: inline-block;
     width: 6.6rem;
     height: 3.2rem;
-   
-  }
-  
-  .switch input { 
+
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -308,9 +316,9 @@ span{
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -320,27 +328,41 @@ span{
     background-color: rgba(255, 255, 255, 0.842);
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #2f0fe6fa;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #0e2335;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(3.3rem);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+/* Rounded sliders */
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+/* MEDIA QUERIES */
+
+
+@media (min-width: 1024px) {
+    .box {
+        margin-top: 10rem;
+        height: 40rem;
+    }
+
+    .user-books {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

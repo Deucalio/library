@@ -78,8 +78,8 @@ function displayBook(title, author, numberOfPages, alreadyRead) {
     toggleBtn.appendChild(span)
 
     p1.innerHTML = `<span>${title}</span>`
-    p2.innerHTML = `${author}`
-    p3.innerHTML = `${numberOfPages}`
+    p2.innerHTML = `Author: ${author}`
+    p3.innerHTML = `Pages: ${numberOfPages}`
     p4.innerHTML = "STATUS: " + (alreadyRead.toUpperCase() === "YES" ? "READ" : "NOT READ");
     userBookDiv.appendChild(p1)
     userBookDiv.appendChild(p2)
