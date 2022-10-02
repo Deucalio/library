@@ -39,6 +39,8 @@ class Book {
 
 
 
+
+
 function whetherRead(checkBoxVal, index) {
     myLibrary[index].toggle(checkBoxVal)
     checkBoxVal === false ? bookBox.children[index].children[3].textContent = "STATUS: NOT READ" :
@@ -69,7 +71,7 @@ function displayBook(title, author, numberOfPages, alreadyRead) {
     toggleBtn.classList.add("switch")
     let cb = document.createElement('input');
     cb.type = "checkbox";
-    if (alreadyRead.toUpperCase() === "YES"){
+    if (alreadyRead.toUpperCase() === "YES") {
         cb.setAttribute("checked", "")
     }
     let span = document.createElement("span")
