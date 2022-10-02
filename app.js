@@ -25,16 +25,18 @@ let checkBoxes = [];
 
 userSection.style.display = "none";
 
-function Book(title, author, numberOfPages, alreadyRead) {
-    this.title = title.toUpperCase();
-    this.author = author.toUpperCase();
-    this.numberOfPages = numberOfPages;
-    this.alreadyRead = alreadyRead.toUpperCase();
+class Book {
+    constructor(title, author, numberOfPages, alreadyRead) {
+        this.title = title.toUpperCase()
+        this.author = author.toUpperCase()
+        this.numberOfPages = numberOfPages
+        this.alreadyRead = alreadyRead.toUpperCase()
+    }
+    toggle(checkBoxVal) {
+        this.alreadyRead = checkBoxVal
+    }
 }
 
-Book.prototype.toggle = function (checkBoxVal) {
-    this.alreadyRead = checkBoxVal;
-}
 
 
 function whetherRead(checkBoxVal, index) {
